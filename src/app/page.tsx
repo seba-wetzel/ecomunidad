@@ -25,7 +25,7 @@ export default function Home() {
           priority
         />
         <h1 className="absolute text-white text-5xl font-gotham font-bold top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]">
-          Somos una comunidad consiente.
+          Somos una comunidad consciente.
         </h1>
       </picture>
       <article className="flex-grow flex justify-center items-center sm:items-start p-10">
