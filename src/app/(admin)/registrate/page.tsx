@@ -1,3 +1,4 @@
+import RegisterForm from "@/app/(admin)/registrate/components/RegisterForm";
 import { getClientes } from "@/modules/Cliente/Aplication/getClientes";
 import { SupabaseClienteRepository } from "@/modules/Cliente/Infrastructure/SupabaseClienteRespository";
 
@@ -5,8 +6,9 @@ const RegisterPage: React.FC = async () => {
   const clientes = await getClientes(SupabaseClienteRepository());
   console.log(clientes);
   return (
-    <div>
+    <>
       <h1>Register Page {}</h1>
+      <RegisterForm />
       {/* 
             <input
                 type="text"
@@ -23,7 +25,7 @@ const RegisterPage: React.FC = async () => {
                 onChange={handleInputChange}
             />
             <button onClick={handleRegister}>Register</button> */}
-    </div>
+    </>
   );
 };
 

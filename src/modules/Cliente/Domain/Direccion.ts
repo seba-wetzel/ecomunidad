@@ -1,10 +1,10 @@
 export interface Direccion {
   calle: string;
-  entreCales: {
+  entreCalles: {
     calle1: string;
     calle2: string;
   };
-  numero: string;
-  piso: string | null;
+  numero: number;
+  piso: number | null;
   barrio: string;
 }

@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Logo from "./assets/imgs/logo.svg";
-import Manos from "./assets/imgs/manos.png";
+import Logo from "../assets/imgs/logo.svg";
+import Manos from "../assets/imgs/manos.png";
 
 export default function Home() {
   return (

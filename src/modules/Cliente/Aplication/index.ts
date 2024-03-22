@@ -1,1 +1,1 @@
-export * from "./getCliente";
+export * from "./getClientes";
