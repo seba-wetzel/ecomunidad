@@ -1,10 +1,8 @@
 import RegisterForm from "@/app/(admin)/registrate/components/RegisterForm";
-import { getClientes } from "@/modules/Cliente/Aplication/getClientes";
-import { SupabaseClienteRepository } from "@/modules/Cliente/Infrastructure/SupabaseClienteRespository";
 
 const RegisterPage: React.FC = async () => {
-  const clientes = await getClientes(SupabaseClienteRepository());
-  console.log(clientes);
+  // const clientes = await getClientes(SupabaseClienteRepository());
+  // console.log(clientes);
   return (
     <>
       <h1>Register Page {}</h1>

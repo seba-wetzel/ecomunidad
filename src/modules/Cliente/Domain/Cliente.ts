@@ -6,5 +6,5 @@ export interface Cliente {
   email: string;
   telefono: string;
   direccion: Direccion;
-  fechaRegistro: Date;
+  fechaRegistro?: Date | null;
 }

@@ -4,7 +4,7 @@ export interface Direccion {
     calle1: string;
     calle2: string;
   };
-  numero: number;
-  piso: number | null;
+  numero: number | undefined;
+  piso: number | undefined;
   barrio: string;
 }
