@@ -18,5 +18,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <body className={cn("bg-black", fontSans.variable)}>{children}</body>;
+  return (
+    <body className={cn("bg-verde-principal", fontSans.variable)}>
+      {children}
+    </body>
+  );
 }
