@@ -1,3 +1,6 @@
+// Array with all 24 provinces of Argentina and CABA
+import type { Provincias } from "./Jurisdicciones";
+
 export interface Direccion {
   calle: string;
   entreCalles: {
@@ -5,6 +8,12 @@ export interface Direccion {
     calle2: string;
   };
   numero: number | undefined;
-  piso: number | undefined;
-  barrio: string;
+  piso?: number | undefined;
+  barrio?: string;
+  localidad: string;
+  provincia?: Provincias;
+  referencia?: string | undefined | null;
+  plusCode?: string;
+  googleValidated?: boolean;
+  googleData?: any;
 }

@@ -1,12 +1,13 @@
 import { defineConfig } from "drizzle-kit";
 //TODO: esto habria que cambiarlo por una inyeccion de dependencias
-import { supabaseURL } from "./supabase/config";
+import { password, supabaseURL } from "./supabase/config";
 
 export default defineConfig({
   schema: "./schemas",
   driver: "pg",
   dbCredentials: {
     connectionString: supabaseURL,
+    password: password,
   },
   verbose: true,
   strict: true,

@@ -1,5 +1,6 @@
 import { Cliente } from "@/modules/Cliente/Domain/Cliente";
 import { Direccion } from "@/modules/Cliente/Domain/Direccion";
+import { TipoCliente } from "@/modules/Cliente/Domain/TipoCliente";
 import { z, ZodType } from "zod";
 
 export const DireccionSchema: ZodType<Direccion> = z
@@ -8,6 +9,7 @@ export const DireccionSchema: ZodType<Direccion> = z
       message: "La calle no puede estar vacía",
     }),
     barrio: z.string(),
+    localidad: z.string(),
     numero: z.coerce.number().refine((value) => value, {
       message: "Debe ingresar un número de calle",
     }),
@@ -22,18 +24,27 @@ export const DireccionSchema: ZodType<Direccion> = z
     numero: true,
   });
 
-export const ClienteSchema: ZodType<Cliente> = z.object({
-  nombre: z.string().refine((value) => value.length > 0, {
-    message: "El nombre no puede estar vacío",
-  }),
-  apellido: z.string().refine((value) => value.length > 0, {
-    message: "El apellido no puede estar vacío",
-  }),
-  email: z.string().email(),
-  telefono: z.string(),
-  direccion: DireccionSchema,
-  fechaRegistro: z.date(),
-});
+const TiposCliente: [TipoCliente, TipoCliente] = ["residencial", "comercial"];
+export const ClienteSchema: ZodType<Cliente> = z
+  .object({
+    nombre: z.string().refine((value) => value.length > 0, {
+      message: "El nombre no puede estar vacío",
+    }),
+    apellido: z.string().refine((value) => value.length > 0, {
+      message: "El apellido no puede estar vacío",
+    }),
+    email: z.string().email(),
+    telefono: z.string().refine((value) => value.length > 0, {
+      message: "El teléfono no puede estar vacío",
+    }),
+    direccion: DireccionSchema,
+    fechaRegistro: z.date(),
+    tipoCliente: z.enum(TiposCliente),
+    cuit: z.number().nullable(),
+  })
+  .refine((value) => value.tipoCliente === "comercial", {
+    message: "El cuit es obligatorio para clientes comerciales",
+  });
 
 export const DireccionDefaultValues = {
   calle: "",
@@ -51,6 +62,8 @@ export const ClienteDefaultValues = {
   apellido: "",
   email: "",
   telefono: "",
+  tipoCliente: "residencial",
+  cuit: null,
   fechaRegistro: new Date(),
   direccion: DireccionDefaultValues,
 };

@@ -1,5 +1,8 @@
+import { TipoCliente } from "@/modules/Cliente/Domain/TipoCliente";
 import {
+  integer,
   json,
+  pgEnum,
   pgTable,
   serial,
   text,
@@ -8,11 +11,19 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 
+const tipos: TipoCliente[] = ["residencial", "comercial"];
+
+export const TipoClienteEnum = pgEnum(
+  "tipo",
+  tipos as unknown as readonly [string, ...string[]]
+);
 //this table is for the registration of the users and should respect the Cliente interface from the domain
 export const clientes = pgTable(
   "clientes",
   {
     id: serial("id").primaryKey(),
+    tipoCliente: TipoClienteEnum("tipo").notNull().default("residencial"),
+    cuit: integer("cuit").default(0),
     nombre: text("nombre").notNull(),
     apellido: text("apellido").notNull(),
     email: varchar("email").notNull(),

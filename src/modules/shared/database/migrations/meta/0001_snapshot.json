@@ -1,6 +1,6 @@
 {
-  "id": "7465f6b2-551a-4d18-a8d9-d2832c13ccc7",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "841e9339-d548-4597-bcc1-896ce8745bec",
+  "prevId": "7465f6b2-551a-4d18-a8d9-d2832c13ccc7",
   "version": "5",
   "dialect": "pg",
   "tables": {
@@ -20,6 +20,13 @@
           "primaryKey": false,
           "notNull": true,
           "default": "'residencial'"
+        },
+        "cuit": {
+          "name": "cuit",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 0
         },
         "nombre": {
           "name": "nombre",
