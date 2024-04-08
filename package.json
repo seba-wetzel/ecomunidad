@@ -7,21 +7,28 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:migrate": "./node_modules/.bin/dotenvx run --env-file=.env.local -- npm run _migrate",
     "db:generate": "./node_modules/.bin/dotenvx run --env-file=.env.local -- npm run _generate",
+    "db:migrate": "./node_modules/.bin/dotenvx run --env-file=.env.local -- npm run _migrate",
+    "db:push": "./node_modules/.bin/dotenvx run --env-file=.env.local -- npm run _push",
     "_generate": "cd  ./src/modules/shared/database && npx drizzle-kit generate:pg ",
-    "_migrate": "cd ./src/modules/shared/database &&  npx tsx ./migrate.ts "
+    "_migrate": "cd ./src/modules/shared/database &&  npx tsx ./migrate.ts",
+    "_push": "cd ./src/modules/shared/database &&  npx drizzle-kit push:pg"
   },
   "dependencies": {
     "@dotenvx/dotenvx": "^0.25.1",
+    "@googlemaps/react-wrapper": "^1.1.35",
     "@hookform/resolvers": "^3.3.4",
     "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-tabs": "^1.0.4",
+    "@vercel/speed-insights": "^1.0.10",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "drizzle-orm": "^0.30.2",
     "lucide-react": "^0.359.0",
     "next": "14.0.3",
+    "pg": "^8.11.5",
     "postgres": "^3.4.3",
     "react": "^18",
     "react-dom": "^18",
@@ -31,6 +38,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@types/google.maps": "lastest",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
