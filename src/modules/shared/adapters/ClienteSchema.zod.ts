@@ -1,5 +1,6 @@
 import { Cliente } from "@/modules/Cliente/Domain/Cliente";
 import { Direccion } from "@/modules/Cliente/Domain/Direccion";
+import { DiaDePreferencia } from "@/modules/Cliente/Domain/Preferencia";
 import { TipoCliente } from "@/modules/Cliente/Domain/TipoCliente";
 import { z, ZodType } from "zod";
 
@@ -25,6 +26,13 @@ export const DireccionSchema: ZodType<Direccion> = z
   });
 
 const TiposCliente: [TipoCliente, TipoCliente] = ["residencial", "comercial"];
+const DiaDePreferenciaEnum: [
+  DiaDePreferencia,
+  DiaDePreferencia,
+  DiaDePreferencia,
+  DiaDePreferencia,
+  DiaDePreferencia
+] = ["LUNES", "MARTES", "MIERCOLES", "JUEVES", "VIERNES"];
 export const ClienteSchema: ZodType<Cliente> = z
   .object({
     nombre: z.string().refine((value) => value.length > 0, {
@@ -41,6 +49,7 @@ export const ClienteSchema: ZodType<Cliente> = z
     fechaRegistro: z.date(),
     tipoCliente: z.enum(TiposCliente),
     cuit: z.number().nullable(),
+    diaDePreferencia: z.enum(DiaDePreferenciaEnum),
   })
   .refine((value) => value.tipoCliente === "comercial", {
     message: "El cuit es obligatorio para clientes comerciales",

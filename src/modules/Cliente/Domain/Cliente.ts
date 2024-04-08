@@ -1,4 +1,5 @@
 import { Direccion } from "./Direccion";
+import { type DiaDePreferencia } from "./Preferencia";
 import { TipoCliente } from "./TipoCliente";
 
 export interface Cliente {
@@ -10,4 +11,5 @@ export interface Cliente {
   fechaRegistro?: Date | null;
   tipoCliente: TipoCliente;
   cuit?: number | null;
+  diaDePreferencia: DiaDePreferencia;
 }

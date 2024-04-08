@@ -15,6 +15,13 @@
       "when": 1712542808389,
       "tag": "0001_parallel_klaw",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1712591585676,
+      "tag": "0002_sweet_valeria_richards",
+      "breakpoints": true
     }
   ]
 }

@@ -18,6 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { DiasDePreferencia } from "@/modules/Cliente/Domain/Preferencia";
 import { useForm } from "react-hook-form";
 
 export function UsuarioForm() {
@@ -29,6 +30,7 @@ export function UsuarioForm() {
       telefono: "",
       tipoCliente: "residencial",
       cuit: "",
+      diaDePreferencia: "LUNES",
     },
   });
   const onSubmit = (data: any) => {
@@ -38,7 +40,7 @@ export function UsuarioForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="">
-        <div className="text-2xl flex flex-row gap-4 flex-wrap text-center justify-center">
+        <div className="text-2xl flex flex-row gap-4 flex-wrap text-center justify-start">
           <FormField
             control={form.control}
             name="nombre"
@@ -94,6 +96,36 @@ export function UsuarioForm() {
                   <Input type="tel" {...field} placeholder="Telefono" />
                 </FormControl>
                 <FormDescription>Telefono del usuario.</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="diaDePreferencia"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Dia de preferencia</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Seleccione que dia pasar por el domicilio" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {Object.values(DiasDePreferencia).map((dia) => (
+                      <SelectItem key={dia} value={dia}>
+                        {dia}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <FormDescription>
+                  Que dia es preferible pasar por el domicilio
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}

@@ -1,0 +1,115 @@
+{
+  "id": "1d93469a-1535-4dda-aac5-00bc44bda365",
+  "prevId": "841e9339-d548-4597-bcc1-896ce8745bec",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "clientes": {
+      "name": "clientes",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "tipo": {
+          "name": "tipo",
+          "type": "tipo",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'residencial'"
+        },
+        "cuit": {
+          "name": "cuit",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 0
+        },
+        "nombre": {
+          "name": "nombre",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "apellido": {
+          "name": "apellido",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "telefono": {
+          "name": "telefono",
+          "type": "varchar(11)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "direccion": {
+          "name": "direccion",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "fecha_registro": {
+          "name": "fecha_registro",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "dia_preferencia": {
+          "name": "dia_preferencia",
+          "type": "diaPreferencia",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'LUNES'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "clientes_email_unique": {
+          "name": "clientes_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        }
+      }
+    }
+  },
+  "enums": {
+    "diaPreferencia": {
+      "name": "diaPreferencia",
+      "values": {
+        "LUNES": "LUNES",
+        "MARTES": "MARTES",
+        "MIERCOLES": "MIERCOLES",
+        "JUEVES": "JUEVES",
+        "VIERNES": "VIERNES"
+      }
+    },
+    "tipo": {
+      "name": "tipo",
+      "values": {
+        "residencial": "residencial",
+        "comercial": "comercial"
+      }
+    }
+  },
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
