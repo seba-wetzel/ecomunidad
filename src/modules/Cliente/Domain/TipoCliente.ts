@@ -1,1 +1,1 @@
-export type TipoCliente = "residencial" | "comercial";
+export type TipoCliente = "residencial" | "gran_generador";

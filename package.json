@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "db:update": "npm run db:generate && npm run db:migrate",
     "db:generate": "./node_modules/.bin/dotenvx run --env-file=.env.local -- npm run _generate",
     "db:migrate": "./node_modules/.bin/dotenvx run --env-file=.env.local -- npm run _migrate",
     "db:push": "./node_modules/.bin/dotenvx run --env-file=.env.local -- npm run _push",

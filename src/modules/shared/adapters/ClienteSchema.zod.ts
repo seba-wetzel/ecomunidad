@@ -25,7 +25,10 @@ export const DireccionSchema: ZodType<Direccion> = z
     numero: true,
   });
 
-const TiposCliente: [TipoCliente, TipoCliente] = ["residencial", "comercial"];
+const TiposCliente: [TipoCliente, TipoCliente] = [
+  "residencial",
+  "gran_generador",
+];
 const DiaDePreferenciaEnum: [
   DiaDePreferencia,
   DiaDePreferencia,
@@ -51,7 +54,7 @@ export const ClienteSchema: ZodType<Cliente> = z
     cuit: z.number().nullable(),
     diaDePreferencia: z.enum(DiaDePreferenciaEnum),
   })
-  .refine((value) => value.tipoCliente === "comercial", {
+  .refine((value) => value.tipoCliente === "gran_generador", {
     message: "El cuit es obligatorio para clientes comerciales",
   });
 

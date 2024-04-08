@@ -148,7 +148,9 @@ export function UsuarioForm() {
                     </FormControl>
                     <SelectContent>
                       <SelectItem value="residencial">Residencial</SelectItem>
-                      <SelectItem value="comercial">Gran generador</SelectItem>
+                      <SelectItem value="gran_generador">
+                        Gran generador
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                   <FormDescription>
@@ -158,7 +160,7 @@ export function UsuarioForm() {
                 </FormItem>
               )}
             />
-            {form.watch("tipoCliente") === "comercial" && (
+            {form.watch("tipoCliente") === "gran_generador" && (
               <FormField
                 control={form.control}
                 name="cuit"

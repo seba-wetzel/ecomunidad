@@ -12,7 +12,7 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 
-const tipos: TipoCliente[] = ["residencial", "comercial"];
+const tipos: TipoCliente[] = ["residencial", "gran_generador"];
 const dias: DiaDePreferencia[] = [
   "LUNES",
   "MARTES",
