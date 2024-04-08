@@ -148,7 +148,7 @@ export function UsuarioForm() {
                     </FormControl>
                     <SelectContent>
                       <SelectItem value="residencial">Residencial</SelectItem>
-                      <SelectItem value="comercial">Comercial</SelectItem>
+                      <SelectItem value="comercial">Gran generador</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormDescription>
