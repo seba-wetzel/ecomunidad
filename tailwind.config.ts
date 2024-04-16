@@ -22,8 +22,9 @@ const config = {
         gotham: ["var(--font-gotham)"],
       },
       colors: {
-        "verde-principal": "#00BF6C",
-        "verde-secundario": "#00371F",
+        "verde-principal": "#00C653",
+        "verde-secundario": "#0B501B",
+        beige: "#F3E7D7",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
