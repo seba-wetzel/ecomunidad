@@ -18,20 +18,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Cliente } from "@/modules/Cliente/Domain/Cliente";
 import { DiasDePreferencia } from "@/modules/Cliente/Domain/Preferencia";
+import {
+  ClienteDefaultValues,
+  ClienteSinDireccionResolver,
+} from "@/modules/shared/adapters/ClienteSchema.zod";
 import { useForm } from "react-hook-form";
 
 export function UsuarioForm() {
-  const form = useForm({
-    defaultValues: {
-      nombre: "",
-      apellido: "",
-      email: "",
-      telefono: "",
-      tipoCliente: "residencial",
-      cuit: "",
-      diaDePreferencia: "LUNES",
-    },
+  const form = useForm<Cliente>({
+    resolver: ClienteSinDireccionResolver,
+    defaultValues: ClienteDefaultValues,
   });
   const onSubmit = (data: any) => {
     console.log(data);
@@ -40,7 +38,7 @@ export function UsuarioForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="">
-        <div className="text-2xl flex flex-row gap-4 flex-wrap text-center justify-start">
+        <div className="text-2xl flex flex-row gap-4 mb-4 flex-wrap text-center justify-start">
           <FormField
             control={form.control}
             name="nombre"
@@ -104,7 +102,7 @@ export function UsuarioForm() {
             control={form.control}
             name="diaDePreferencia"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="hidden">
                 <FormLabel>Dia de preferencia</FormLabel>
                 <Select
                   onValueChange={field.onChange}
@@ -168,7 +166,7 @@ export function UsuarioForm() {
                   <FormItem>
                     <FormLabel>Cuit</FormLabel>
                     <FormControl>
-                      <Input {...field} placeholder="Cuit" />
+                      <Input {...field} type="number" placeholder="Cuit" />
                     </FormControl>
                     <FormDescription>
                       Cuit del comercio del usuario.

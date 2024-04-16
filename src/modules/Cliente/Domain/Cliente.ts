@@ -10,6 +10,6 @@ export interface Cliente {
   direccion: Direccion;
   fechaRegistro?: Date | null;
   tipoCliente: TipoCliente;
-  cuit?: number | null;
+  cuit?: number | string;
   diaDePreferencia: DiaDePreferencia;
 }

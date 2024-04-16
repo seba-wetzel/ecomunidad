@@ -2,6 +2,7 @@ import { Cliente } from "@/modules/Cliente/Domain/Cliente";
 import { Direccion } from "@/modules/Cliente/Domain/Direccion";
 import { DiaDePreferencia } from "@/modules/Cliente/Domain/Preferencia";
 import { TipoCliente } from "@/modules/Cliente/Domain/TipoCliente";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { z, ZodType } from "zod";
 
 export const DireccionSchema: ZodType<Direccion> = z
@@ -36,27 +37,39 @@ const DiaDePreferenciaEnum: [
   DiaDePreferencia,
   DiaDePreferencia
 ] = ["LUNES", "MARTES", "MIERCOLES", "JUEVES", "VIERNES"];
-export const ClienteSchema: ZodType<Cliente> = z
-  .object({
-    nombre: z.string().refine((value) => value.length > 0, {
-      message: "El nombre no puede estar vacío",
+
+export const ClienteSchema = z.object({
+  nombre: z.string().refine((value) => value.length > 0, {
+    message: "El nombre no puede estar vacío",
+  }),
+  apellido: z.string().refine((value) => value.length > 0, {
+    message: "El apellido no puede estar vacío",
+  }),
+  email: z.string().email({
+    message: "Debe ingresar un email válido",
+  }),
+  telefono: z.string().refine((value) => value.length > 0, {
+    message: "El teléfono no puede estar vacío",
+  }),
+  direccion: DireccionSchema,
+  fechaRegistro: z.date(),
+  tipoCliente: z.enum(TiposCliente),
+  cuit: z.coerce
+    .number()
+    .default(0)
+    .refine((value) => value, {
+      message: "El cuit es obligatorio para clientes comerciales",
     }),
-    apellido: z.string().refine((value) => value.length > 0, {
-      message: "El apellido no puede estar vacío",
-    }),
-    email: z.string().email(),
-    telefono: z.string().refine((value) => value.length > 0, {
-      message: "El teléfono no puede estar vacío",
-    }),
-    direccion: DireccionSchema,
-    fechaRegistro: z.date(),
-    tipoCliente: z.enum(TiposCliente),
-    cuit: z.number().nullable(),
-    diaDePreferencia: z.enum(DiaDePreferenciaEnum),
-  })
-  .refine((value) => value.tipoCliente === "gran_generador", {
-    message: "El cuit es obligatorio para clientes comerciales",
-  });
+
+  diaDePreferencia: z.enum(DiaDePreferenciaEnum),
+});
+ClienteSchema.refine((value) => value.tipoCliente === "gran_generador", {
+  message: "El cuit es obligatorio para clientes comerciales",
+});
+export type ClienteSchema = z.infer<typeof ClienteSchema>;
+
+export const ClienteSinDireccionSchema: ZodType<Omit<Cliente, "direccion">> =
+  ClienteSchema.omit({ direccion: true });
 
 export const DireccionDefaultValues = {
   calle: "",
@@ -74,8 +87,15 @@ export const ClienteDefaultValues = {
   apellido: "",
   email: "",
   telefono: "",
-  tipoCliente: "residencial",
-  cuit: null,
+  tipoCliente: "residencial" as TipoCliente,
+  cuit: "",
   fechaRegistro: new Date(),
-  direccion: DireccionDefaultValues,
+  diaDePreferencia: "LUNES" as DiaDePreferencia,
+  // direccion: DireccionDefaultValues,
 };
+
+export const ClienteResolver = zodResolver(ClienteSchema);
+export const ClienteSinDireccionResolver = zodResolver(
+  ClienteSinDireccionSchema
+);
+export const DireccionResolver = zodResolver(DireccionSchema);
