@@ -54,22 +54,21 @@ export const ClienteSchema = z.object({
   direccion: DireccionSchema,
   fechaRegistro: z.date(),
   tipoCliente: z.enum(TiposCliente),
-  cuit: z.coerce
-    .number()
-    .default(0)
-    .refine((value) => value, {
-      message: "El cuit es obligatorio para clientes comerciales",
-    }),
-
+  cuit: z.coerce.number(),
   diaDePreferencia: z.enum(DiaDePreferenciaEnum),
 });
-ClienteSchema.refine((value) => value.tipoCliente === "gran_generador", {
-  message: "El cuit es obligatorio para clientes comerciales",
-});
+
 export type ClienteSchema = z.infer<typeof ClienteSchema>;
 
 export const ClienteSinDireccionSchema: ZodType<Omit<Cliente, "direccion">> =
-  ClienteSchema.omit({ direccion: true });
+  ClienteSchema.omit({ direccion: true }).refine(
+    (value) => value.tipoCliente !== "gran_generador" || !!value.cuit,
+    {
+      message: "El cuit es obligatorio para clientes comerciales",
+
+      path: ["cuit"],
+    }
+  );
 
 export const DireccionDefaultValues = {
   calle: "",

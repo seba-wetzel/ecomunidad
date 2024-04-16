@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
+
 import {
   Form,
   FormControl,
@@ -26,13 +27,18 @@ import {
 } from "@/modules/shared/adapters/ClienteSchema.zod";
 import { useForm } from "react-hook-form";
 
-export function UsuarioForm() {
+interface Props {
+  handlerNext: () => void;
+}
+
+export function UsuarioForm({ handlerNext }: Props) {
   const form = useForm<Cliente>({
     resolver: ClienteSinDireccionResolver,
     defaultValues: ClienteDefaultValues,
   });
   const onSubmit = (data: any) => {
-    console.log(data);
+    window.localStorage.setItem("cliente", JSON.stringify(data));
+    if (handlerNext) handlerNext();
   };
 
   return (
@@ -178,7 +184,12 @@ export function UsuarioForm() {
             )}
           </div>
         </div>
-        <Button>Siguiente</Button>
+        <Button
+          type="submit"
+          disabled={Object.entries(form.formState.errors).length > 0}
+        >
+          Siguiente
+        </Button>
       </form>
     </Form>
   );

@@ -1,3 +1,4 @@
+"use client";
 import {
   Card,
   CardContent,
@@ -6,17 +7,24 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useState } from "react";
 
 import { DireccionForm } from "./components/DireccionForm";
 import { UsuarioForm } from "./components/UsuarioForm";
 
-const RegisterPage: React.FC = async () => {
+const RegisterPage: React.FC = () => {
   // const clientes = await getClientes(SupabaseClienteRepository());
   // console.log(clientes);
+  const [tab, setTab] = useState("cuenta");
+  const handlerNext = () => {
+    console.log("next");
+    setTab("direccion");
+  };
   return (
     <>
       <Tabs
         defaultValue="cuenta"
+        value={tab}
         className="w-[600px] my-36  space-y-8 max-w-lg m-auto"
       >
         <TabsList className="grid w-full grid-cols-2">
@@ -30,7 +38,7 @@ const RegisterPage: React.FC = async () => {
               <CardDescription>Datos del nuevo usuario</CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
-              <UsuarioForm />
+              <UsuarioForm handlerNext={handlerNext} />
             </CardContent>
           </Card>
         </TabsContent>
