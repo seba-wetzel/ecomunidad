@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
+// import { useActionState } from "react";
 import { useForm } from "react-hook-form";
 
 export function DireccionForm() {
@@ -26,6 +27,8 @@ export function DireccionForm() {
       referencia: "",
     },
   });
+
+  // const actionState = useActionState(()=>null, {});
   const onSubmit = (data: any) => {
     console.log(data);
   };
@@ -125,8 +128,13 @@ export function DireccionForm() {
           <Mapa />
         </div>
         <div className="mt-10 flex justify-around">
-          <Button>Validar direccion</Button>
-          <Button disabled>Guardar!</Button>
+          <Button className="bg-verde-secundario">Validar direccion</Button>
+          <Button
+            disabled
+            className="disabled:bg-verde-principal bg-verde-secundario"
+          >
+            Guardar!
+          </Button>
         </div>
       </form>
     </Form>

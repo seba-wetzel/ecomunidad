@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import { Outfit } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 
-const fontSans = FontSans({
+const font = Outfit({
   subsets: ["latin"],
-  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
@@ -19,8 +18,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <body className={cn("bg-verde-principal", fontSans.variable)}>
-      {children}
-    </body>
+    <body className={cn("bg-verde-principal", font.className)}>{children}</body>
   );
 }

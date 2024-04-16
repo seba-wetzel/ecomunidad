@@ -1,4 +1,5 @@
 "use client";
+import Logo from "@/app/assets/vectores/Logo Ecomunidad neg OK.svg";
 import {
   Card,
   CardContent,
@@ -7,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Image from "next/image";
 import { useState } from "react";
 
 import { DireccionForm } from "./components/DireccionForm";
@@ -17,22 +19,31 @@ const RegisterPage: React.FC = () => {
   // console.log(clientes);
   const [tab, setTab] = useState("cuenta");
   const handlerNext = () => {
-    console.log("next");
     setTab("direccion");
   };
   return (
     <>
+      <Image
+        className="mx-auto -mb-52 -mt-20"
+        src={Logo}
+        alt="ecoMunidad Logo"
+        width={512}
+        height={23 * 1.5}
+        priority
+      />
       <Tabs
         defaultValue="cuenta"
         value={tab}
-        className="w-[600px] my-36  space-y-8 max-w-lg m-auto"
+        className="w-[600px] my-36  space-y-8 max-w-fit md:max-w-xl  m-auto px-4"
       >
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="cuenta">Usuario</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-2 ">
+          <TabsTrigger className=" text-verde-secundario" value="cuenta">
+            Usuario
+          </TabsTrigger>
           <TabsTrigger value="direccion">Direccion</TabsTrigger>
         </TabsList>
         <TabsContent value="cuenta">
-          <Card>
+          <Card className=" text-verde-secundario">
             <CardHeader>
               <CardTitle>Cuenta del Usuario</CardTitle>
               <CardDescription>Datos del nuevo usuario</CardDescription>
@@ -43,7 +54,7 @@ const RegisterPage: React.FC = () => {
           </Card>
         </TabsContent>
         <TabsContent value="direccion">
-          <Card>
+          <Card className=" text-verde-secundario">
             <CardHeader>
               <CardTitle>Direccion</CardTitle>
               <CardDescription>

@@ -187,6 +187,7 @@ export function UsuarioForm({ handlerNext }: Props) {
         <Button
           type="submit"
           disabled={Object.entries(form.formState.errors).length > 0}
+          className="bg-verde-secundario"
         >
           Siguiente
         </Button>
