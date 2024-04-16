@@ -46,7 +46,9 @@ export function DireccionForm() {
                 <FormControl>
                   <Input {...field} placeholder="Calle" />
                 </FormControl>
-                <FormDescription>Calle</FormDescription>
+                <FormDescription className="text-start ml-4">
+                  Nombre de la calle
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -60,7 +62,9 @@ export function DireccionForm() {
                 <FormControl>
                   <Input {...field} type="number" placeholder="Numero" />
                 </FormControl>
-                <FormDescription>numeracion</FormDescription>
+                <FormDescription className="text-start ml-4">
+                  Numeracion
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -74,7 +78,9 @@ export function DireccionForm() {
                 <FormControl>
                   <Input {...field} placeholder="Barrio" />
                 </FormControl>
-                <FormDescription>Barrio</FormDescription>
+                <FormDescription className="text-start ml-4">
+                  Barrio
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -88,7 +94,9 @@ export function DireccionForm() {
                 <FormControl>
                   <Input type="number" {...field} placeholder="Piso" />
                 </FormControl>
-                <FormDescription>Piso</FormDescription>
+                <FormDescription className="text-start ml-4">
+                  Piso
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -106,7 +114,7 @@ export function DireccionForm() {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription>
+                <FormDescription className="text-start ml-4">
                   Descripcion para encontrar el domicilio
                 </FormDescription>
                 <FormMessage />

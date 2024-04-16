@@ -54,7 +54,9 @@ export function UsuarioForm({ handlerNext }: Props) {
                 <FormControl>
                   <Input placeholder="Nombre" {...field} />
                 </FormControl>
-                <FormDescription>Nombre del usuario.</FormDescription>
+                <FormDescription className="text-start ml-4">
+                  Nombre del usuario.
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -69,7 +71,9 @@ export function UsuarioForm({ handlerNext }: Props) {
                 <FormControl>
                   <Input {...field} placeholder="Apellido" />
                 </FormControl>
-                <FormDescription>Apellido del usuario.</FormDescription>
+                <FormDescription className="text-start ml-4">
+                  Apellido del usuario.
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -84,7 +88,9 @@ export function UsuarioForm({ handlerNext }: Props) {
                 <FormControl>
                   <Input type="email" {...field} placeholder="Email" />
                 </FormControl>
-                <FormDescription>Email del usuario.</FormDescription>
+                <FormDescription className="text-start ml-4">
+                  Email del usuario.
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -99,7 +105,9 @@ export function UsuarioForm({ handlerNext }: Props) {
                 <FormControl>
                   <Input type="tel" {...field} placeholder="Telefono" />
                 </FormControl>
-                <FormDescription>Telefono del usuario.</FormDescription>
+                <FormDescription className="text-start ml-4">
+                  Telefono del usuario.
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -127,7 +135,7 @@ export function UsuarioForm({ handlerNext }: Props) {
                     ))}
                   </SelectContent>
                 </Select>
-                <FormDescription>
+                <FormDescription className="text-start ml-4">
                   Que dia es preferible pasar por el domicilio
                 </FormDescription>
                 <FormMessage />
@@ -157,7 +165,7 @@ export function UsuarioForm({ handlerNext }: Props) {
                       </SelectItem>
                     </SelectContent>
                   </Select>
-                  <FormDescription>
+                  <FormDescription className="text-start ml-4">
                     Selecciona el tipo de usuario de la cuenta
                   </FormDescription>
                   <FormMessage />
@@ -174,8 +182,8 @@ export function UsuarioForm({ handlerNext }: Props) {
                     <FormControl>
                       <Input {...field} type="number" placeholder="Cuit" />
                     </FormControl>
-                    <FormDescription>
-                      Cuit del comercio del usuario.
+                    <FormDescription className="text-start ml-4">
+                      Cuit del establecimiento.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
