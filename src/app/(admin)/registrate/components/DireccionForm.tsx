@@ -1,11 +1,11 @@
 "use client";
+import { FormButton } from "@/components/FormButton";
 import Mapa from "@/components/Mapa";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
+  // FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -14,7 +14,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
-// import { useActionState } from "react";
 import { useForm } from "react-hook-form";
 
 export function DireccionForm() {
@@ -28,9 +27,8 @@ export function DireccionForm() {
     },
   });
 
-  // const actionState = useActionState(()=>null, {});
   const onSubmit = (data: any) => {
-    console.log(data);
+    // actionDispatch(data);
   };
 
   return (
@@ -41,14 +39,14 @@ export function DireccionForm() {
             control={form.control}
             name="calle"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="flex flex-col items-start">
                 <FormLabel>Calle</FormLabel>
                 <FormControl>
                   <Input {...field} placeholder="Calle" />
                 </FormControl>
-                <FormDescription className="text-start ml-4">
+                {/* <FormDescription className="text-start ml-4">
                   Nombre de la calle
-                </FormDescription>
+                </FormDescription> */}
                 <FormMessage />
               </FormItem>
             )}
@@ -57,14 +55,14 @@ export function DireccionForm() {
             control={form.control}
             name="numero"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="flex flex-col items-start">
                 <FormLabel>Numero</FormLabel>
                 <FormControl>
                   <Input {...field} type="number" placeholder="Numero" />
                 </FormControl>
-                <FormDescription className="text-start ml-4">
+                {/* <FormDescription className="text-start ml-4">
                   Numeracion
-                </FormDescription>
+                </FormDescription> */}
                 <FormMessage />
               </FormItem>
             )}
@@ -73,14 +71,14 @@ export function DireccionForm() {
             control={form.control}
             name="barrio"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="flex flex-col items-start">
                 <FormLabel>Barrio</FormLabel>
                 <FormControl>
                   <Input {...field} placeholder="Barrio" />
                 </FormControl>
-                <FormDescription className="text-start ml-4">
+                {/* <FormDescription className="text-start ml-4">
                   Barrio
-                </FormDescription>
+                </FormDescription> */}
                 <FormMessage />
               </FormItem>
             )}
@@ -89,14 +87,14 @@ export function DireccionForm() {
             control={form.control}
             name="piso"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="flex flex-col items-start">
                 <FormLabel>Piso</FormLabel>
                 <FormControl>
                   <Input type="number" {...field} placeholder="Piso" />
                 </FormControl>
-                <FormDescription className="text-start ml-4">
+                {/* <FormDescription className="text-start ml-4">
                   Piso
-                </FormDescription>
+                </FormDescription> */}
                 <FormMessage />
               </FormItem>
             )}
@@ -105,7 +103,7 @@ export function DireccionForm() {
             control={form.control}
             name="referencia"
             render={({ field }) => (
-              <FormItem className="w-full">
+              <FormItem className="w-full mx-2 flex flex-col items-start">
                 <FormLabel>Referencia</FormLabel>
                 <FormControl>
                   <Textarea
@@ -114,9 +112,9 @@ export function DireccionForm() {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription className="text-start ml-4">
+                {/* <FormDescription className="text-start ml-4">
                   Descripcion para encontrar el domicilio
-                </FormDescription>
+                </FormDescription> */}
                 <FormMessage />
               </FormItem>
             )}
@@ -136,9 +134,11 @@ export function DireccionForm() {
           <Mapa />
         </div>
         <div className="mt-10 flex justify-around">
-          <Button className="bg-verde-secundario">Validar direccion</Button>
+          <FormButton className="bg-verde-secundario">
+            Validar direccion
+          </FormButton>
           <Button
-            disabled
+            type="button"
             className="disabled:bg-verde-principal bg-verde-secundario"
           >
             Guardar!

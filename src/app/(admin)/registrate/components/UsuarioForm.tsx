@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
+  // FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -49,14 +49,14 @@ export function UsuarioForm({ handlerNext }: Props) {
             control={form.control}
             name="nombre"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="flex flex-col items-start">
                 <FormLabel>Nombre</FormLabel>
                 <FormControl>
                   <Input placeholder="Nombre" {...field} />
                 </FormControl>
-                <FormDescription className="text-start ml-4">
+                {/* <FormDescription className="text-start ml-4">
                   Nombre del usuario.
-                </FormDescription>
+                </FormDescription> */}
                 <FormMessage />
               </FormItem>
             )}
@@ -66,14 +66,14 @@ export function UsuarioForm({ handlerNext }: Props) {
             control={form.control}
             name="apellido"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="flex flex-col items-start">
                 <FormLabel>Apellido</FormLabel>
                 <FormControl>
                   <Input {...field} placeholder="Apellido" />
                 </FormControl>
-                <FormDescription className="text-start ml-4">
+                {/* <FormDescription className="text-start ml-4">
                   Apellido del usuario.
-                </FormDescription>
+                </FormDescription> */}
                 <FormMessage />
               </FormItem>
             )}
@@ -83,14 +83,14 @@ export function UsuarioForm({ handlerNext }: Props) {
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="flex flex-col items-start">
                 <FormLabel>Email</FormLabel>
                 <FormControl>
                   <Input type="email" {...field} placeholder="Email" />
                 </FormControl>
-                <FormDescription className="text-start ml-4">
+                {/* <FormDescription className="text-start ml-4">
                   Email del usuario.
-                </FormDescription>
+                </FormDescription> */}
                 <FormMessage />
               </FormItem>
             )}
@@ -100,14 +100,14 @@ export function UsuarioForm({ handlerNext }: Props) {
             control={form.control}
             name="telefono"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="flex flex-col items-start">
                 <FormLabel>Telefono</FormLabel>
                 <FormControl>
                   <Input type="tel" {...field} placeholder="Telefono" />
                 </FormControl>
-                <FormDescription className="text-start ml-4">
+                {/* <FormDescription className="text-start ml-4">
                   Telefono del usuario.
-                </FormDescription>
+                </FormDescription> */}
                 <FormMessage />
               </FormItem>
             )}
@@ -116,7 +116,7 @@ export function UsuarioForm({ handlerNext }: Props) {
             control={form.control}
             name="diaDePreferencia"
             render={({ field }) => (
-              <FormItem className="hidden">
+              <FormItem className="hidden ">
                 <FormLabel>Dia de preferencia</FormLabel>
                 <Select
                   onValueChange={field.onChange}
@@ -135,19 +135,19 @@ export function UsuarioForm({ handlerNext }: Props) {
                     ))}
                   </SelectContent>
                 </Select>
-                <FormDescription className="text-start ml-4">
+                {/* <FormDescription className="text-start ml-4">
                   Que dia es preferible pasar por el domicilio
-                </FormDescription>
+                </FormDescription> */}
                 <FormMessage />
               </FormItem>
             )}
           />
-          <div className="flex  gap-4">
+          <div className="flex   gap-4 justify-start">
             <FormField
               control={form.control}
               name="tipoCliente"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex flex-col items-start w-full">
                   <FormLabel>Tipo de usuario</FormLabel>
                   <Select
                     onValueChange={field.onChange}
@@ -165,9 +165,9 @@ export function UsuarioForm({ handlerNext }: Props) {
                       </SelectItem>
                     </SelectContent>
                   </Select>
-                  <FormDescription className="text-start ml-4">
+                  {/* <FormDescription className="text-start ml-4">
                     Selecciona el tipo de usuario de la cuenta
-                  </FormDescription>
+                  </FormDescription> */}
                   <FormMessage />
                 </FormItem>
               )}
@@ -177,14 +177,14 @@ export function UsuarioForm({ handlerNext }: Props) {
                 control={form.control}
                 name="cuit"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="flex flex-col items-start w-full">
                     <FormLabel>Cuit</FormLabel>
                     <FormControl>
                       <Input {...field} type="number" placeholder="Cuit" />
                     </FormControl>
-                    <FormDescription className="text-start ml-4">
+                    {/* <FormDescription className="text-start ml-4">
                       Cuit del establecimiento.
-                    </FormDescription>
+                    </FormDescription> */}
                     <FormMessage />
                   </FormItem>
                 )}
