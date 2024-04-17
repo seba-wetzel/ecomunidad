@@ -24,7 +24,7 @@ const RegisterPage: React.FC = () => {
   return (
     <>
       <Image
-        className="mx-auto my-10"
+        className="mx-auto my-10 px-4 md:px-0"
         src={Logo}
         alt="ecoMunidad Logo"
         width={512}
@@ -34,7 +34,7 @@ const RegisterPage: React.FC = () => {
       <Tabs
         defaultValue="cuenta"
         value={tab}
-        className="w-[600px]   space-y-8 max-w-fit md:max-w-xl  m-auto px-4"
+        className="w-[600px]   space-y-8 max-w-fit  m-auto px-4"
       >
         <TabsList className="grid w-full grid-cols-2 ">
           <TabsTrigger className=" text-verde-secundario" value="cuenta">
