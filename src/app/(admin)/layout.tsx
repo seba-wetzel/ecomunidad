@@ -18,7 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <body className={cn("bg-verde-principal tracking-wider", font.className)}>
+    <body
+      className={cn("bg-verde-principal tracking-wide pb-4", font.className)}
+    >
       {children}
     </body>
   );

@@ -44,12 +44,12 @@ export function UsuarioForm({ handlerNext }: Props) {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="">
-        <div className="text-2xl flex flex-row gap-4 mb-4 flex-wrap text-center justify-start">
+        <div className="text-2xl flex flex-row gap-4 mb-4 flex-wrap  justify-start">
           <FormField
             control={form.control}
             name="nombre"
             render={({ field }) => (
-              <FormItem className="flex flex-col items-start">
+              <FormItem className="flex flex-col items-start w-full md:w-auto">
                 <FormLabel>Nombre</FormLabel>
                 <FormControl>
                   <Input placeholder="Nombre" {...field} />
@@ -66,7 +66,7 @@ export function UsuarioForm({ handlerNext }: Props) {
             control={form.control}
             name="apellido"
             render={({ field }) => (
-              <FormItem className="flex flex-col items-start">
+              <FormItem className="flex flex-col items-start w-full md:w-auto">
                 <FormLabel>Apellido</FormLabel>
                 <FormControl>
                   <Input {...field} placeholder="Apellido" />
@@ -83,7 +83,7 @@ export function UsuarioForm({ handlerNext }: Props) {
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem className="flex flex-col items-start">
+              <FormItem className="flex flex-col items-start w-full md:w-auto">
                 <FormLabel>Email</FormLabel>
                 <FormControl>
                   <Input type="email" {...field} placeholder="Email" />
@@ -100,7 +100,7 @@ export function UsuarioForm({ handlerNext }: Props) {
             control={form.control}
             name="telefono"
             render={({ field }) => (
-              <FormItem className="flex flex-col items-start">
+              <FormItem className="flex flex-col items-start w-full md:w-auto">
                 <FormLabel>Teléfono</FormLabel>
                 <FormControl>
                   <Input type="tel" {...field} placeholder="Teléfono" />

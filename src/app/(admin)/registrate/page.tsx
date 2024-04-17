@@ -45,7 +45,9 @@ const RegisterPage: React.FC = () => {
         <TabsContent value="cuenta">
           <Card className=" text-verde-secundario">
             <CardHeader>
-              <CardTitle>Cuenta del Usuario</CardTitle>
+              <CardTitle className="tracking-wide">
+                Cuenta del Usuario
+              </CardTitle>
               <CardDescription>Datos del nuevo usuario</CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
@@ -56,7 +58,7 @@ const RegisterPage: React.FC = () => {
         <TabsContent value="direccion">
           <Card className=" text-verde-secundario">
             <CardHeader>
-              <CardTitle>Direccion</CardTitle>
+              <CardTitle className="tracking-wide">Direccion</CardTitle>
               <CardDescription>
                 Datos de la direccion del usuario.
               </CardDescription>

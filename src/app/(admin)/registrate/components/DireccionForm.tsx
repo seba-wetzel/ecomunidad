@@ -28,18 +28,29 @@ export function DireccionForm() {
   });
 
   const onSubmit = (data: any) => {
-    // actionDispatch(data);
+    console.log({ data });
+    fetch("/api/validate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="">
-        <div className="text-2xl flex flex-row gap-4 flex-wrap text-center justify-center">
+        <div className="text-2xl flex flex-row gap-4 flex-wrap  justify-start">
           <FormField
             control={form.control}
             name="calle"
             render={({ field }) => (
-              <FormItem className="flex flex-col items-start">
+              <FormItem className="flex flex-col items-start  w-full md:w-auto">
                 <FormLabel>Calle</FormLabel>
                 <FormControl>
                   <Input {...field} placeholder="Calle" />
@@ -55,7 +66,7 @@ export function DireccionForm() {
             control={form.control}
             name="numero"
             render={({ field }) => (
-              <FormItem className="flex flex-col items-start">
+              <FormItem className="flex flex-col items-start  w-full md:w-auto">
                 <FormLabel>Numero</FormLabel>
                 <FormControl>
                   <Input {...field} type="number" placeholder="Numero" />
@@ -71,7 +82,7 @@ export function DireccionForm() {
             control={form.control}
             name="barrio"
             render={({ field }) => (
-              <FormItem className="flex flex-col items-start">
+              <FormItem className="flex flex-col items-start  w-full md:w-auto">
                 <FormLabel>Barrio</FormLabel>
                 <FormControl>
                   <Input {...field} placeholder="Barrio" />
@@ -87,7 +98,7 @@ export function DireccionForm() {
             control={form.control}
             name="piso"
             render={({ field }) => (
-              <FormItem className="flex flex-col items-start">
+              <FormItem className="flex flex-col items-start  w-full md:w-auto">
                 <FormLabel>Piso</FormLabel>
                 <FormControl>
                   <Input type="number" {...field} placeholder="Piso" />
