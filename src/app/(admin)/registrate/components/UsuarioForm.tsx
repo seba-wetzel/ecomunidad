@@ -101,9 +101,9 @@ export function UsuarioForm({ handlerNext }: Props) {
             name="telefono"
             render={({ field }) => (
               <FormItem className="flex flex-col items-start">
-                <FormLabel>Telefono</FormLabel>
+                <FormLabel>Teléfono</FormLabel>
                 <FormControl>
-                  <Input type="tel" {...field} placeholder="Telefono" />
+                  <Input type="tel" {...field} placeholder="Teléfono" />
                 </FormControl>
                 {/* <FormDescription className="text-start ml-4">
                   Telefono del usuario.
