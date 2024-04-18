@@ -24,7 +24,7 @@ const RegisterPage: React.FC = () => {
   return (
     <>
       <Image
-        className="mx-auto my-10 px-4 md:px-0"
+        className="mx-auto my-10 px-10 md:px-0"
         src={Logo}
         alt="ecoMunidad Logo"
         width={512}
