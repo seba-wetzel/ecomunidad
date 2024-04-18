@@ -177,7 +177,7 @@ export function UsuarioForm({ handlerNext }: Props) {
                 control={form.control}
                 name="cuit"
                 render={({ field }) => (
-                  <FormItem className="flex flex-col flex-grow items-start w-full md:w-auto">
+                  <FormItem className="flex flex-col  items-start w-full md:max-w-[251px]">
                     <FormLabel>Cuit</FormLabel>
                     <FormControl>
                       <Input {...field} type="number" placeholder="Cuit" />
