@@ -25,6 +25,8 @@ const config = {
         "verde-principal": "#00C653",
         "verde-secundario": "#0B501B",
         beige: "#F3E7D7",
+        "active-tab": "#FFF9F2",
+        "inactive-tab": "#F0EAE3",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
