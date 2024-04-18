@@ -45,12 +45,12 @@ export function DireccionForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="">
-        <div className="text-2xl flex flex-row gap-4 flex-wrap  justify-start">
+        <div className="text-2xl flex flex-row gap-4 mb-4 flex-wrap justify-between">
           <FormField
             control={form.control}
             name="calle"
             render={({ field }) => (
-              <FormItem className="flex flex-col items-start  w-full md:w-auto">
+              <FormItem className="flex flex-col flex-grow items-start w-full md:w-auto">
                 <FormLabel>Calle</FormLabel>
                 <FormControl>
                   <Input {...field} placeholder="Calle" />
@@ -66,8 +66,8 @@ export function DireccionForm() {
             control={form.control}
             name="numero"
             render={({ field }) => (
-              <FormItem className="flex flex-col items-start  w-full md:w-auto">
-                <FormLabel>Numero</FormLabel>
+              <FormItem className="flex flex-col flex-grow items-start w-full md:w-auto">
+                <FormLabel>Número</FormLabel>
                 <FormControl>
                   <Input {...field} type="number" placeholder="Numero" />
                 </FormControl>
@@ -82,7 +82,7 @@ export function DireccionForm() {
             control={form.control}
             name="barrio"
             render={({ field }) => (
-              <FormItem className="flex flex-col items-start  w-full md:w-auto">
+              <FormItem className="flex flex-col flex-grow items-start w-full md:w-auto">
                 <FormLabel>Barrio</FormLabel>
                 <FormControl>
                   <Input {...field} placeholder="Barrio" />
@@ -98,7 +98,7 @@ export function DireccionForm() {
             control={form.control}
             name="piso"
             render={({ field }) => (
-              <FormItem className="flex flex-col items-start  w-full md:w-auto">
+              <FormItem className="flex flex-col flex-grow items-start w-full md:w-auto">
                 <FormLabel>Piso</FormLabel>
                 <FormControl>
                   <Input type="number" {...field} placeholder="Piso" />
@@ -114,7 +114,7 @@ export function DireccionForm() {
             control={form.control}
             name="referencia"
             render={({ field }) => (
-              <FormItem className="w-full mx-2 flex flex-col items-start">
+              <FormItem className="w-full  flex flex-col items-start">
                 <FormLabel>Referencia</FormLabel>
                 <FormControl>
                   <Textarea
@@ -133,20 +133,20 @@ export function DireccionForm() {
         </div>
         <div className="flex flex-col gap-2 m-4">
           <h3 className="text-base  text-start">
-            Lamentablemente no pudimos validar la direccion
+            Lamentablemente no pudimos validar la dirección
           </h3>
           <p className="text-sm text-start font-light">
-            No encontramos la direccion exacta pero tenemos una ubicacion
+            No encontramos la dirección exacta pero tenemos una ubicación
             aproximada, podrias confirmar si es la que figura en el mapa?
           </p>
           <p className="text-sm text-start font-light">
-            De no ser el punto exacto, podes mover el marcador.
+            De no ser el punto exacto, podés mover el marcador.
           </p>
           <Mapa />
         </div>
         <div className="mt-10 flex justify-around">
           <FormButton className="bg-verde-secundario">
-            Validar direccion
+            Validar dirección
           </FormButton>
           <Button
             type="button"

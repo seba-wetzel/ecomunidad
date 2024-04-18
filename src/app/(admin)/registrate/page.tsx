@@ -36,11 +36,21 @@ const RegisterPage: React.FC = () => {
         value={tab}
         className="w-[600px]   space-y-8 max-w-fit  m-auto px-4"
       >
-        <TabsList className="grid w-full grid-cols-2 ">
-          <TabsTrigger className=" text-verde-secundario" value="cuenta">
+        <TabsList className="grid w-full grid-cols-2 bg-inactive-tab">
+          <TabsTrigger
+            className="font-semibold text-verde-principal bg-inactive-tab data-[state=active]:text-verde-secundario data-[state=active]:bg-active-tab "
+            value="cuenta"
+            onClick={() => setTab("cuenta")}
+          >
             Usuario
           </TabsTrigger>
-          <TabsTrigger value="direccion">Direccion</TabsTrigger>
+          <TabsTrigger
+            className="font-semibold text-verde-principal bg-inactive-tab data-[state=active]:text-verde-secundario data-[state=active]:bg-active-tab "
+            value="direccion"
+            onClick={() => setTab("direccion")}
+          >
+            Dirección
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="cuenta">
           <Card className=" text-verde-secundario">
@@ -58,9 +68,9 @@ const RegisterPage: React.FC = () => {
         <TabsContent value="direccion">
           <Card className=" text-verde-secundario">
             <CardHeader>
-              <CardTitle className="tracking-wide">Direccion</CardTitle>
+              <CardTitle className="tracking-wide">Dirección</CardTitle>
               <CardDescription>
-                Datos de la direccion del usuario.
+                Datos de la dirección del usuario.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">

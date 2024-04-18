@@ -44,12 +44,12 @@ export function UsuarioForm({ handlerNext }: Props) {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="">
-        <div className="text-2xl flex flex-row gap-4 mb-4 flex-wrap  justify-start">
+        <div className="text-2xl flex flex-row gap-4 mb-4 flex-wrap justify-between">
           <FormField
             control={form.control}
             name="nombre"
             render={({ field }) => (
-              <FormItem className="flex flex-col items-start w-full md:w-auto">
+              <FormItem className="flex flex-col flex-grow items-start w-full md:w-auto">
                 <FormLabel>Nombre</FormLabel>
                 <FormControl>
                   <Input placeholder="Nombre" {...field} />
@@ -66,7 +66,7 @@ export function UsuarioForm({ handlerNext }: Props) {
             control={form.control}
             name="apellido"
             render={({ field }) => (
-              <FormItem className="flex flex-col items-start w-full md:w-auto">
+              <FormItem className="flex flex-col flex-grow items-start w-full md:w-auto">
                 <FormLabel>Apellido</FormLabel>
                 <FormControl>
                   <Input {...field} placeholder="Apellido" />
@@ -83,7 +83,7 @@ export function UsuarioForm({ handlerNext }: Props) {
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem className="flex flex-col items-start w-full md:w-auto">
+              <FormItem className="flex flex-col flex-grow items-start w-full md:w-auto">
                 <FormLabel>Email</FormLabel>
                 <FormControl>
                   <Input type="email" {...field} placeholder="Email" />
@@ -100,7 +100,7 @@ export function UsuarioForm({ handlerNext }: Props) {
             control={form.control}
             name="telefono"
             render={({ field }) => (
-              <FormItem className="flex flex-col items-start w-full md:w-auto">
+              <FormItem className="flex flex-col flex-grow items-start w-full md:w-auto">
                 <FormLabel>Teléfono</FormLabel>
                 <FormControl>
                   <Input type="tel" {...field} placeholder="Teléfono" />
@@ -142,12 +142,12 @@ export function UsuarioForm({ handlerNext }: Props) {
               </FormItem>
             )}
           />
-          <div className="flex   gap-4 justify-start">
+          <div className="flex flex-row flex-grow gap-4 mb-4 flex-wrap justify-between">
             <FormField
               control={form.control}
               name="tipoCliente"
               render={({ field }) => (
-                <FormItem className="flex flex-col items-start w-full">
+                <FormItem className="flex flex-col flex-grow items-start w-full md:max-w-[251px]">
                   <FormLabel>Tipo de usuario</FormLabel>
                   <Select
                     onValueChange={field.onChange}
@@ -177,7 +177,7 @@ export function UsuarioForm({ handlerNext }: Props) {
                 control={form.control}
                 name="cuit"
                 render={({ field }) => (
-                  <FormItem className="flex flex-col items-start w-full">
+                  <FormItem className="flex flex-col flex-grow items-start w-full md:w-auto">
                     <FormLabel>Cuit</FormLabel>
                     <FormControl>
                       <Input {...field} type="number" placeholder="Cuit" />
