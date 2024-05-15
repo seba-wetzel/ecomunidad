@@ -16,6 +16,7 @@ export const DireccionSchema: ZodType<Direccion> = z
       message: "Debe ingresar un número de calle",
     }),
     piso: z.coerce.number(),
+    referencia: z.string().nullable(),
     entreCalles: z.object({
       calle1: z.string(),
       calle2: z.string(),
@@ -48,13 +49,26 @@ export const ClienteSchema = z.object({
   email: z.string().email({
     message: "Debe ingresar un email válido",
   }),
+  //TODO: Validar que el email no esté en uso
+  // .refine(
+  //   async (value) => {
+  //     if (!value) return false;
+  //     const res = await fetch(`/api/validate/email?email=${value}`);
+  //     const { isValid } = await res.json();
+  //     return isValid;
+  //   },
+  //   {
+  //     message: "El email parece estar en uso",
+  //   }
+  // ),
+
   telefono: z.string().refine((value) => value.length > 0, {
     message: "El teléfono no puede estar vacío",
   }),
   direccion: DireccionSchema,
-  fechaRegistro: z.date(),
+  fechaRegistro: z.coerce.date(), //.refine((value) => console.log(value), {  message: "La fecha de registro no puede ser mayor a la actual",  }),
   tipoCliente: z.enum(TiposCliente),
-  cuit: z.coerce.number(),
+  cuit: z.optional(z.coerce.number()),
   diaDePreferencia: z.enum(DiaDePreferenciaEnum),
 });
 
@@ -70,17 +84,6 @@ export const ClienteSinDireccionSchema: ZodType<Omit<Cliente, "direccion">> =
     }
   );
 
-export const DireccionDefaultValues = {
-  calle: "",
-  barrio: "",
-  numero: 0,
-  piso: 0,
-  entreCalles: {
-    calle1: "",
-    calle2: "",
-  },
-};
-
 export const ClienteDefaultValues = {
   nombre: "",
   apellido: "",
@@ -92,9 +95,23 @@ export const ClienteDefaultValues = {
   diaDePreferencia: "LUNES" as DiaDePreferencia,
   // direccion: DireccionDefaultValues,
 };
+export const DireccionDefaultValues = {
+  calle: "",
+  barrio: "",
+  numero: 0,
+  piso: 0,
+  entreCalles: {
+    calle1: "",
+    calle2: "",
+  },
+  localidad: "",
+  referencia: "",
+};
 
+//TODO: Estas funciones tienen que estar en otro archivo
 export const ClienteResolver = zodResolver(ClienteSchema);
 export const ClienteSinDireccionResolver = zodResolver(
   ClienteSinDireccionSchema
 );
+
 export const DireccionResolver = zodResolver(DireccionSchema);
