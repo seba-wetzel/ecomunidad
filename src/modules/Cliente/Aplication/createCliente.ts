@@ -5,9 +5,5 @@ export const createCliente = async (
   clientRepository: ClientRepository,
   client: Cliente
 ) => {
-  try {
-    return await clientRepository.createCliente(client);
-  } catch (error) {
-    console.error("Failed to create client: ", error);
-  }
+  return await clientRepository.createCliente(client);
 };

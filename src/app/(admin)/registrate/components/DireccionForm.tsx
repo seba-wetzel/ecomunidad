@@ -207,6 +207,7 @@ export function DireccionForm() {
           </Button>
           <Button
             type="button"
+            disabled={loading}
             className="disabled:bg-verde-principal bg-verde-secundario"
           >
             Guardar!
