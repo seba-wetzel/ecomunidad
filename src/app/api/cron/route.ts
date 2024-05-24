@@ -1,13 +1,15 @@
 import { getClientes } from "@/modules/Cliente/Aplication/";
 import { SupabaseClienteRepository } from "@/modules/Cliente/Infrastructure/SupabaseClienteRespository";
-import { NextApiResponse } from "next";
 
-export async function GET(req: Request, res: NextApiResponse) {
-  if (
-    req.headers.get("Authorization") !== `Bearer ${process.env.CRON_SECRET}`
-  ) {
-    return res.status(401);
+import type { NextRequest } from "next/server";
+
+export async function GET(request: NextRequest) {
+  const authHeader = request.headers.get("authorization");
+  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    return new Response("Unauthorized", {
+      status: 401,
+    });
   }
   const _clientes = await getClientes(SupabaseClienteRepository());
-  return res.json({ ok: true });
+  return Response.json({ success: true });
 }
