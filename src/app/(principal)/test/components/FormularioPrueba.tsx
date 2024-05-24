@@ -1,7 +1,7 @@
 "use client";
 
 import { validateAddress } from "@/actions/validateAddress";
-import { BotonForm } from "@/components/BotonForm";
+// import { BotonForm } from "@/components/BotonForm";
 import { useFormState } from "react-dom";
 
 const initialState = {
@@ -24,7 +24,7 @@ export function Formulario() {
       <p aria-live="polite" className="text-black">
         {state?.message}
       </p>
-      <BotonForm />
+      {/* <BotonForm /> */}
     </form>
   );
 }
