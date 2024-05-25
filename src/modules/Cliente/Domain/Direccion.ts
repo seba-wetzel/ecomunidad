@@ -3,7 +3,7 @@ import type { Provincias } from "./Jurisdicciones";
 
 export interface Direccion {
   calle: string;
-  entreCalles: {
+  entreCalles?: {
     calle1: string;
     calle2: string;
   };
@@ -12,7 +12,7 @@ export interface Direccion {
   barrio?: string;
   localidad: string;
   provincia?: Provincias;
-  referencia?: string | undefined | null;
+  referencia?: string | null;
   plusCode?: string;
   googleValidated?: boolean;
   googleData?: any;

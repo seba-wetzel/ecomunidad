@@ -1,7 +1,8 @@
 import { DiaDePreferencia } from "@/modules/Cliente/Domain/Preferencia";
 import { TipoCliente } from "@/modules/Cliente/Domain/TipoCliente";
+import { type InferInsertModel, type InferSelectModel } from "drizzle-orm";
 import {
-  integer,
+  bigint,
   json,
   pgEnum,
   pgTable,
@@ -37,13 +38,13 @@ export const clientes = pgTable(
   {
     id: serial("id").primaryKey(),
     tipoCliente: TipoClienteEnum("tipo").notNull().default("residencial"),
-    cuit: integer("cuit").default(0),
+    cuit: bigint("cuit", { mode: "number" }).default(0),
     nombre: text("nombre").notNull(),
     apellido: text("apellido").notNull(),
     email: varchar("email").notNull(),
     telefono: varchar("telefono", { length: 11 }).notNull(),
     direccion: json("direccion"),
-    fechaRegistro: timestamp("fecha_registro").defaultNow().notNull(),
+    fechaRegistro: timestamp("fecha_registro").defaultNow(),
     diaDePreferencia: DiaDePreferenciaEnum("dia_preferencia")
       .notNull()
       .default("LUNES"),
@@ -52,3 +53,6 @@ export const clientes = pgTable(
     unq: unique().on(cliente.email),
   })
 );
+
+export type NuevoCliente = InferInsertModel<typeof clientes>;
+export type SelectCliente = InferSelectModel<typeof clientes>;

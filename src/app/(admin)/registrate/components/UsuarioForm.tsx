@@ -1,6 +1,5 @@
 "use client";
 import { Button } from "@/components/ui/button";
-
 import {
   Form,
   FormControl,
@@ -11,6 +10,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useEffect } from "react";
 
 import {
   Select,
@@ -35,11 +35,22 @@ export function UsuarioForm({ handlerNext }: Props) {
   const form = useForm<Cliente>({
     resolver: ClienteSinDireccionResolver,
     defaultValues: ClienteDefaultValues,
+    // reValidateMode: "onBlur",
   });
   const onSubmit = (data: any) => {
+    console.log("Enviando datos");
+    // console.log(data);
     window.localStorage.setItem("cliente", JSON.stringify(data));
     if (handlerNext) handlerNext();
   };
+  useEffect(() => {
+    const data = JSON.parse(window.localStorage.getItem("cliente") || "{}");
+    if (data.fechaRegistro) {
+      data.fechaRegistro = new Date(data.fechaRegistro);
+    }
+
+    form.reset(data);
+  }, [form]);
 
   return (
     <Form {...form}>
@@ -190,12 +201,27 @@ export function UsuarioForm({ handlerNext }: Props) {
                 )}
               />
             )}
+            <FormField
+              control={form.control}
+              name="fechaRegistro"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      className="hidden"
+                      {...field}
+                      value={field.value?.toString()}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
           </div>
         </div>
         <Button
           type="submit"
-          disabled={Object.entries(form.formState.errors).length > 0}
           className="bg-verde-secundario"
+          // disabled={Object.keys(form.formState.errors).length > 0}
         >
           Siguiente
         </Button>
